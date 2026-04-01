@@ -48,51 +48,153 @@ body {
     color: white;
     padding: 20px 0;
 }
-/* TOMATO PAGE */
+/* TOMATO PAGE FINAL */
 
-/* БАННЕР */
+.tomato-page-body {
+    background: #efefef;
+}
+
+.tomato-page-wrapper {
+    max-width: 1120px;
+    margin: 0 auto;
+    background: #f7eded;
+}
+
+.tomato-inner {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
 .tomato-banner {
-    height: 300px;
+    height: 285px;
     background: url("tomato-banner.png") center/cover no-repeat;
 }
 
-/* БЛОК С ТЕКСТОМ */
 .tomato-content {
-    background: #f3eaea;
-    padding: 50px 0;
+    padding: 28px 0 20px;
 }
 
 .title {
     text-align: center;
-    font-size: 36px;
-    margin-bottom: 20px;
+    font-size: 22px;
+    color: #324950;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.mini-line {
+    width: 28px;
+    height: 4px;
+    background: #57984c;
+    margin: 0 auto 18px;
 }
 
 .text {
-    text-align: center;
-    max-width: 800px;
-    margin: auto;
-    margin-bottom: 40px;
+    font-size: 11px;
+    line-height: 1.7;
+    color: #324950;
+    margin-bottom: 12px;
 }
 
-/* СЕТКА ТОМАТОВ */
+.left-text {
+    text-align: left;
+}
+
+.note-box {
+    border-left: 3px solid #e04e39;
+    padding-left: 12px;
+    font-size: 11px;
+    color: #324950;
+    margin: 20px 0 22px;
+}
+
+.tomato-info-columns {
+    margin-bottom: 18px;
+}
+
+.info-card {
+    background: #fff7f7;
+    padding: 16px 14px;
+    height: 100%;
+}
+
+.info-card h4 {
+    font-size: 12px;
+    font-weight: 700;
+    color: #324950;
+    margin-bottom: 10px;
+}
+
+.info-card p {
+    font-size: 11px;
+    line-height: 1.7;
+    color: #324950;
+    margin: 0;
+}
+
+.small-note {
+    border-left: 3px solid #e04e39;
+    padding-left: 12px;
+    font-size: 11px;
+    color: #324950;
+    margin: 8px 0 12px;
+}
+
 .tomato-grid {
-    padding: 50px 0;
+    padding: 8px 0 40px;
 }
 
-.card {
-    border: none;
+.tomato-card {
     text-align: center;
 }
 
-.card img {
+.tomato-card-img {
     width: 100%;
-    height: 200px;
+    height: 155px;
     object-fit: cover;
+    display: block;
 }
 
-.card p {
-    margin-top: 10px;
-    font-size: 14px;
-    color: green;
+.tomato-card h5 {
+    color: #57984c;
+    font-size: 12px;
+    font-weight: 700;
+    margin: 8px 0 4px;
+}
+
+.tomato-card p {
+    color: #7aa06d;
+    font-size: 10px;
+    margin: 0;
+}
+
+.footer {
+    background: #2f4f4f;
+    color: white;
+    padding: 12px 0;
+    font-size: 12px;
+}
+
+@media (max-width: 991px) {
+    .tomato-page-wrapper {
+        margin: 0 10px;
+    }
+
+    .tomato-inner {
+        padding: 0 12px;
+    }
+}
+
+@media (max-width: 767px) {
+    .tomato-banner {
+        height: 180px;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    .tomato-card-img {
+        height: 190px;
+    }
 }
