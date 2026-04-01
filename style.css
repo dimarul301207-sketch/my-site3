@@ -3,6 +3,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
+/* HEADER */
 .header {
     background: #ffffff;
     padding: 10px 0;
@@ -11,40 +12,37 @@ body {
 .header-img {
     max-width: 100%;
     height: auto;
-    display: block;
-    margin: 0 auto;
 }
 
+/* HERO */
 .hero {
     height: 850px;
-    background-image: url("../images/hero.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background: url("hero.jpg") center/cover no-repeat;
 }
 
+/* ICONS */
 .icons {
     padding: 30px 0;
     background: #f5f5f5;
 }
 
-.products {
-    padding: 40px 0;
-    background: #ffffff;
+.section-img {
+    max-width: 100%;
+    height: auto;
 }
 
+/* PRODUCTS */
+.products {
+    padding: 40px 0;
+}
+
+/* VISION MISSION */
 .vision-mission {
     padding: 40px 0;
     background: #fafafa;
 }
 
-.section-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-}
-
+/* FOOTER */
 .footer {
     background: #2f4f4f;
     color: white;
