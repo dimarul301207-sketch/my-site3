@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* HEADER */
+/* HEADER OLD */
 .header {
     background: #ffffff;
     padding: 10px 0;
@@ -12,6 +12,60 @@ body {
 .header-img {
     max-width: 100%;
     height: auto;
+}
+
+/* NEW HEADER */
+.site-header {
+    background: #ffffff;
+    padding: 10px 0;
+}
+
+.site-header-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0 15px;
+}
+
+.site-logo {
+    max-height: 60px;
+    height: auto;
+    display: block;
+}
+
+.menu-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.search-line input {
+    border: none;
+    border-bottom: 1px solid #999;
+    outline: none;
+    font-size: 12px;
+    margin-bottom: 10px;
+    padding: 4px 0;
+    background: transparent;
+}
+
+.main-nav {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #324950;
+    font-size: 12px;
+}
+
+.main-nav a:hover {
+    color: #57984c;
 }
 
 /* HERO */
@@ -46,8 +100,11 @@ body {
 .footer {
     background: #2f4f4f;
     color: white;
-    padding: 20px 0;
+    padding: 12px 0;
+    font-size: 12px;
+    text-align: center;
 }
+
 /* TOMATO PAGE FINAL */
 
 .tomato-page-body {
@@ -162,42 +219,21 @@ body {
     margin: 8px 0 4px;
 }
 
+.tomato-card h5 a {
+    color: #57984c;
+    text-decoration: none;
+}
+
+.tomato-card h5 a:hover {
+    text-decoration: underline;
+}
+
 .tomato-card p {
     color: #7aa06d;
     font-size: 10px;
     margin: 0;
 }
 
-.footer {
-    background: #2f4f4f;
-    color: white;
-    padding: 12px 0;
-    font-size: 12px;
-}
-
-@media (max-width: 991px) {
-    .tomato-page-wrapper {
-        margin: 0 10px;
-    }
-
-    .tomato-inner {
-        padding: 0 12px;
-    }
-}
-
-@media (max-width: 767px) {
-    .tomato-banner {
-        height: 180px;
-    }
-
-    .title {
-        font-size: 18px;
-    }
-
-    .tomato-card-img {
-        height: 190px;
-    }
-} 
 /* TOMATO ONE PAGE */
 
 .tomato-one {
@@ -205,11 +241,13 @@ body {
     background: #f4f4f4;
 }
 
-.container {
+.tomato-one-container {
     width: 1000px;
+    max-width: 100%;
     margin: auto;
     display: flex;
     gap: 50px;
+    padding: 0 15px;
 }
 
 /* ЛЕВАЯ ЧАСТЬ */
@@ -228,6 +266,7 @@ body {
 
 .divider {
     margin: 15px 0;
+    max-width: 100%;
 }
 
 .highlight {
@@ -267,4 +306,144 @@ body {
 .info {
     margin-top: 20px;
     text-align: left;
+}
+
+/* CONTACT PAGE */
+
+.contact-page-wrapper {
+    max-width: 1120px;
+    margin: 0 auto;
+    background: #f7eded;
+    min-height: 600px;
+}
+
+.contact-section {
+    padding: 40px 0 60px;
+}
+
+.contact-inner {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.contact-title {
+    text-align: center;
+    font-size: 32px;
+    color: #324950;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.contact-grid {
+    display: flex;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.contact-left,
+.contact-right {
+    width: 50%;
+}
+
+.contact-left h3 {
+    color: #57984c;
+    font-size: 18px;
+    margin-bottom: 12px;
+    margin-top: 20px;
+}
+
+.contact-left p {
+    font-size: 14px;
+    color: #324950;
+    line-height: 1.7;
+    margin-bottom: 8px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #cfd8d3;
+    font-size: 14px;
+    outline: none;
+    background: white;
+    box-sizing: border-box;
+}
+
+.contact-form button {
+    width: 160px;
+    padding: 12px 20px;
+    background: #57984c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 991px) {
+    .tomato-page-wrapper {
+        margin: 0 10px;
+    }
+
+    .tomato-inner,
+    .contact-inner {
+        padding: 0 12px;
+    }
+
+    .tomato-one-container {
+        flex-direction: column;
+    }
+
+    .left,
+    .right {
+        width: 100%;
+    }
+
+    .site-header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu-block {
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 767px) {
+    .tomato-banner {
+        height: 180px;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    .tomato-card-img {
+        height: 190px;
+    }
+
+    .contact-grid {
+        flex-direction: column;
+    }
+
+    .contact-left,
+    .contact-right {
+        width: 100%;
+    }
+
+    .main-nav {
+        gap: 10px;
+    }
+
+    .left h1 {
+        font-size: 24px;
+    }
 }
