@@ -446,4 +446,41 @@ body {
     .left h1 {
         font-size: 24px;
     }
+} 
+/* BURGER MENU */
+
+.menu-toggle {
+    display: none;
+}
+
+.burger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* MOBILE */
+@media (max-width: 1024px) {
+
+    .burger {
+        display: block;
+    }
+
+    .main-nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #fff;
+        padding: 10px 0;
+    }
+
+    .menu-toggle:checked + .burger + .main-nav {
+        display: flex;
+    }
+
+    .main-nav a {
+        padding: 8px 0;
+        font-size: 14px;
+    }
 }

@@ -2,26 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <!-- ВАЖНО ДЛЯ АДАПТИВА -->
+    <meta name="viewport" content="width=320, initial-scale=1.0">
+
     <title>Tomato One</title>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
 </head>
 
 <body>
 
-<!-- HEADER (ИСПРАВЛЕННЫЙ) -->
+<!-- HEADER (С БУРГЕРОМ) -->
 <header class="site-header">
     <div class="site-header-inner">
 
-        <!-- ЛОГО -->
         <div class="logo-block">
             <img src="header.png" alt="logo" class="site-logo">
         </div>
 
-        <!-- МЕНЮ -->
         <div class="menu-block">
             <div class="search-line">
                 <input type="text" placeholder="Search">
             </div>
+
+            <!-- БУРГЕР -->
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="burger">☰</label>
 
             <nav class="main-nav">
                 <a href="index.html">Home</a>
@@ -39,7 +48,7 @@
 <!-- ОСНОВНОЙ БЛОК -->
 <section class="tomato-one">
 
-    <div class="container">
+    <div class="tomato-one-container">
 
         <!-- ЛЕВАЯ ЧАСТЬ -->
         <div class="left">

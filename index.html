@@ -2,7 +2,10 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- АДАПТИВ (исправлено) -->
+    <meta name="viewport" content="width=320, initial-scale=1.0">
+
     <title>Agridera</title>
 
     <!-- Bootstrap -->
@@ -10,10 +13,11 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
 </head>
 <body>
 
-<!-- HEADER (НОВЫЙ) -->
+<!-- HEADER С БУРГЕРОМ -->
 <header class="site-header">
     <div class="site-header-inner">
 
@@ -27,6 +31,10 @@
             <div class="search-line">
                 <input type="text" placeholder="Search">
             </div>
+
+            <!-- БУРГЕР -->
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="burger">☰</label>
 
             <nav class="main-nav">
                 <a href="index.html">Home</a>
