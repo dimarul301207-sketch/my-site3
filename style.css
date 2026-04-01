@@ -197,4 +197,74 @@ body {
     .tomato-card-img {
         height: 190px;
     }
+} 
+/* TOMATO ONE PAGE */
+
+.tomato-one {
+    padding: 50px 0;
+    background: #f4f4f4;
+}
+
+.container {
+    width: 1000px;
+    margin: auto;
+    display: flex;
+    gap: 50px;
+}
+
+/* ЛЕВАЯ ЧАСТЬ */
+.left {
+    width: 50%;
+}
+
+.left h1 {
+    color: #2e7d32;
+    font-size: 32px;
+}
+
+.left h2 {
+    color: #333;
+}
+
+.divider {
+    margin: 15px 0;
+}
+
+.highlight {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #ffe5e5;
+    padding: 10px;
+    margin: 20px 0;
+}
+
+.highlight img {
+    width: 30px;
+}
+
+/* ПРАВАЯ ЧАСТЬ */
+.right {
+    width: 50%;
+    text-align: center;
+}
+
+.main-img {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid green;
+    color: green;
+    text-decoration: none;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.info {
+    margin-top: 20px;
+    text-align: left;
 }
