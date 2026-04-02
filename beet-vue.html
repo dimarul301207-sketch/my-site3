@@ -2,25 +2,20 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Beet (Vue)</title>
-
-    <!-- CSS -->
+    <meta name="viewport" content="width=320, initial-scale=1.0">
+    <title>Beet Products (Vue)</title>
     <link rel="stylesheet" href="style.css">
-
-    <!-- Vue -->
-    <script src="https://unpkg.com/vue@3"></script>
+    <link rel="stylesheet" href="responsive.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
+<body class="tomato-page-body">
 
-<body>
-
-<!-- HEADER -->
-<header class="site-header">
+<header class="site-header beet-header">
     <div class="site-header-inner">
 
-        <div class="logo-block">
-            <img src="header.png" class="site-logo">
+        <div class="beet-logo">
+            <a href="index.html">AGRIDERA</a>
+            <span>Seeds &amp; Agriculture</span>
         </div>
 
         <div class="menu-block">
@@ -28,88 +23,141 @@
                 <input type="text" placeholder="Search">
             </div>
 
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="burger">☰</label>
+
             <nav class="main-nav">
                 <a href="index.html">Home</a>
-                <a href="tomato-all.html">Products</a>
+                <a href="tomato-all.html">Tomato</a>
                 <a href="beet-vue.html">Beet</a>
                 <a href="contact.html">Contact</a>
             </nav>
         </div>
-
     </div>
 </header>
 
-<!-- VUE APP -->
-<div id="app">
+<div id="app" class="tomato-page-wrapper">
 
-    <!-- БАННЕР -->
     <section class="beet-banner"></section>
 
-    <!-- ЗАГОЛОВОК -->
     <section class="tomato-content">
-        <h1 class="title">Beet Products</h1>
-        <p class="text">High quality beet varieties for modern agriculture</p>
+        <div class="tomato-inner">
+            <h2 class="title">Beet Products</h2>
+            <div class="mini-line"></div>
+            <p class="text left-text">
+                High quality beet varieties for modern agriculture. Click on a product card to see more information below.
+            </p>
+        </div>
     </section>
 
-    <!-- КАРТОЧКИ -->
     <section class="tomato-grid">
-        <div class="container">
-
-            <div class="row">
-
+        <div class="tomato-inner">
+            <div class="row g-4">
                 <div class="col-md-4" v-for="item in beets" :key="item.id">
-                    <div class="card">
-
-                        <img :src="item.img">
-
-                        <h4>{{ item.title }}</h4>
+                    <div class="tomato-card beet-card" @click="selected = item">
+                        <img :src="item.img" :alt="item.title" class="tomato-card-img">
+                        <h5>{{ item.code }}</h5>
                         <p>{{ item.desc }}</p>
-
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
+    <section class="tomato-one" v-if="selected">
+        <div class="tomato-one-container">
+            <div class="left">
+                <h2>{{ selected.code }}</h2>
+                <h1>{{ selected.title }}</h1>
+
+                <div class="mini-line beet-left-line"></div>
+
+                <div class="highlight">
+                    <p>{{ selected.highlight }}</p>
+                </div>
+
+                <h3>CHARACTERISTICS</h3>
+
+                <p><b>Plant:</b><br>{{ selected.plant }}</p>
+                <p><b>Root:</b><br>{{ selected.root }}</p>
+                <p><b>Usage:</b><br>{{ selected.usage }}</p>
             </div>
 
+            <div class="right">
+                <img :src="selected.mainImage" :alt="selected.title" class="main-img">
+                <a href="#" class="btn">Download PDF</a>
+
+                <div class="info">
+                    <p><b>Cycle</b><br>{{ selected.cycle }}</p>
+                    <p><b>Color</b><br>{{ selected.color }}</p>
+                </div>
+            </div>
         </div>
     </section>
 
 </div>
 
-<!-- FOOTER -->
 <footer class="footer text-center">
     <p>© 2026 Agridera</p>
 </footer>
 
-<!-- VUE SCRIPT -->
 <script>
-const app = Vue.createApp({
+const { createApp } = Vue;
+
+createApp({
     data() {
         return {
+            selected: null,
             beets: [
                 {
                     id: 1,
+                    code: "BEET 1001",
+                    title: "Fresh Market Red Beet",
+                    desc: "High yield beet variety",
                     img: "beet-1.png",
-                    title: "Beet 1",
-                    desc: "High yield beet variety"
+                    mainImage: "beet-main.jpg",
+                    highlight: "High yield and excellent root quality!",
+                    plant: "Strong tops, stable field performance, good adaptation to different conditions.",
+                    root: "Uniform round shape, smooth skin, deep red inner color.",
+                    usage: "Fresh market, storage, processing.",
+                    cycle: "Spring, Summer, Autumn",
+                    color: "Dark red"
                 },
                 {
                     id: 2,
+                    code: "BEET 1002",
+                    title: "Sweet Strong Beet",
+                    desc: "Sweet and strong roots",
                     img: "beet-2.png",
-                    title: "Beet 2",
-                    desc: "Sweet and strong roots"
+                    mainImage: "beet-main.jpg",
+                    highlight: "Strong roots and attractive commercial appearance!",
+                    plant: "Healthy leaves, reliable growth and stable productivity.",
+                    root: "Dense roots with strong flesh and rich internal color.",
+                    usage: "Fresh market and storage.",
+                    cycle: "Spring, Summer",
+                    color: "Red"
                 },
                 {
                     id: 3,
+                    code: "BEET 1003",
+                    title: "Storage Beet",
+                    desc: "Perfect for storage",
                     img: "beet-3.png",
-                    title: "Beet 3",
-                    desc: "Perfect for storage"
+                    mainImage: "beet-main.jpg",
+                    highlight: "Excellent storage quality and good taste!",
+                    plant: "Strong plant vigor and field tolerance.",
+                    root: "Round roots, smooth skin and good keeping quality.",
+                    usage: "Storage and processing.",
+                    cycle: "Summer, Autumn",
+                    color: "Dark red"
                 }
             ]
-        }
+        };
+    },
+    mounted() {
+        this.selected = this.beets[0];
     }
-})
-
-app.mount("#app")
+}).mount('#app');
 </script>
 
 </body>

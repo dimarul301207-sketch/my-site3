@@ -484,17 +484,65 @@ body {
         font-size: 14px;
     }
 } 
-/* BEET PAGE */
+/* BEET VUE PAGE */
+
+.beet-header .site-header-inner {
+    align-items: center;
+}
+
+.beet-logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.beet-logo a {
+    text-decoration: none;
+    color: #2e7d32;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.beet-logo span {
+    color: #57984c;
+    font-size: 12px;
+    text-transform: uppercase;
+}
 
 .beet-banner {
-    height: 300px;
+    height: 280px;
     background: url("beet-banner.jpg") center/cover no-repeat;
 }
 
-.card h4 {
-    margin-top: 10px;
+.beet-card {
+    cursor: pointer;
 }
 
-.card {
-    padding: 15px;
+.beet-card:hover {
+    transform: translateY(-3px);
+    transition: 0.2s;
+}
+
+.beet-left-line {
+    margin: 0 0 18px 0;
+}
+
+.highlight {
+    display: flex;
+    align-items: center;
+    background: #ffe5e5;
+    padding: 10px;
+    margin: 20px 0;
+}
+
+.highlight p {
+    margin: 0;
+    color: #d94b4b;
+    font-weight: 700;
+}
+
+@media (max-width: 767px) {
+    .beet-logo a {
+        font-size: 24px;
+    }
 }
