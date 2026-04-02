@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Beet (Vue)</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Vue -->
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+    <div class="site-header-inner">
+
+        <div class="logo-block">
+            <img src="header.png" class="site-logo">
+        </div>
+
+        <div class="menu-block">
+            <div class="search-line">
+                <input type="text" placeholder="Search">
+            </div>
+
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="tomato-all.html">Products</a>
+                <a href="beet-vue.html">Beet</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+
+    </div>
+</header>
+
+<!-- VUE APP -->
+<div id="app">
+
+    <!-- БАННЕР -->
+    <section class="beet-banner"></section>
+
+    <!-- ЗАГОЛОВОК -->
+    <section class="tomato-content">
+        <h1 class="title">Beet Products</h1>
+        <p class="text">High quality beet varieties for modern agriculture</p>
+    </section>
+
+    <!-- КАРТОЧКИ -->
+    <section class="tomato-grid">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-4" v-for="item in beets" :key="item.id">
+                    <div class="card">
+
+                        <img :src="item.img">
+
+                        <h4>{{ item.title }}</h4>
+                        <p>{{ item.desc }}</p>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer text-center">
+    <p>© 2026 Agridera</p>
+</footer>
+
+<!-- VUE SCRIPT -->
+<script>
+const app = Vue.createApp({
+    data() {
+        return {
+            beets: [
+                {
+                    id: 1,
+                    img: "beet-1.png",
+                    title: "Beet 1",
+                    desc: "High yield beet variety"
+                },
+                {
+                    id: 2,
+                    img: "beet-2.png",
+                    title: "Beet 2",
+                    desc: "Sweet and strong roots"
+                },
+                {
+                    id: 3,
+                    img: "beet-3.png",
+                    title: "Beet 3",
+                    desc: "Perfect for storage"
+                }
+            ]
+        }
+    }
+})
+
+app.mount("#app")
+</script>
+
+</body>
+</html>

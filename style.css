@@ -483,4 +483,18 @@ body {
         padding: 8px 0;
         font-size: 14px;
     }
+} 
+/* BEET PAGE */
+
+.beet-banner {
+    height: 300px;
+    background: url("beet-banner.jpg") center/cover no-repeat;
+}
+
+.card h4 {
+    margin-top: 10px;
+}
+
+.card {
+    padding: 15px;
 }
