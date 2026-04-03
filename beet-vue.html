@@ -12,7 +12,6 @@
 
 <header class="site-header beet-header">
     <div class="site-header-inner">
-
         <div class="beet-logo">
             <a href="index.html">AGRIDERA</a>
             <span>Seeds &amp; Agriculture</span>
@@ -45,7 +44,7 @@
             <h2 class="title">Beet Products</h2>
             <div class="mini-line"></div>
             <p class="text left-text">
-                High quality beet varieties for modern agriculture. Click on a product card to see more information below.
+                High quality beet varieties for modern agriculture. Select a product and add it to cart.
             </p>
         </div>
     </section>
@@ -54,10 +53,11 @@
         <div class="tomato-inner">
             <div class="row g-4">
                 <div class="col-md-4" v-for="item in beets" :key="item.id">
-                    <div class="tomato-card beet-card" @click="selected = item">
-                        <img :src="item.img" :alt="item.title" class="tomato-card-img">
+                    <div class="tomato-card beet-card">
+                        <img :src="item.img" :alt="item.title" class="tomato-card-img" @click="selected = item">
                         <h5>{{ item.code }}</h5>
                         <p>{{ item.desc }}</p>
+                        <button class="cart-add-btn" @click="addToCart(item.id)">Add to cart</button>
                     </div>
                 </div>
             </div>
@@ -110,7 +110,7 @@ createApp({
             selected: null,
             beets: [
                 {
-                    id: 1,
+                    id: 101,
                     code: "BEET 1001",
                     title: "Fresh Market Red Beet",
                     desc: "High yield beet variety",
@@ -124,7 +124,7 @@ createApp({
                     color: "Dark red"
                 },
                 {
-                    id: 2,
+                    id: 102,
                     code: "BEET 1002",
                     title: "Sweet Strong Beet",
                     desc: "Sweet and strong roots",
@@ -138,7 +138,7 @@ createApp({
                     color: "Red"
                 },
                 {
-                    id: 3,
+                    id: 103,
                     code: "BEET 1003",
                     title: "Storage Beet",
                     desc: "Perfect for storage",
@@ -156,8 +156,16 @@ createApp({
     },
     mounted() {
         this.selected = this.beets[0];
+    },
+    methods: {
+        addToCart(id) {
+            const cart = JSON.parse(localStorage.getItem("cart")) || {};
+            cart[id] = id;
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert("Product added to cart");
+        }
     }
-}).mount('#app');
+}).mount("#app");
 </script>
 
 </body>

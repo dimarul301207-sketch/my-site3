@@ -1,24 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-
-    <!-- АДАПТИВ -->
     <meta name="viewport" content="width=320, initial-scale=1.0">
-
     <title>Contact us</title>
-
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="responsive.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
-
 <body class="tomato-page-body">
 
-<!-- HEADER С БУРГЕРОМ -->
 <header class="site-header">
     <div class="site-header-inner">
-
         <div class="logo-block">
             <img src="header.png" alt="logo" class="site-logo">
         </div>
@@ -28,30 +21,53 @@
                 <input type="text" placeholder="Search">
             </div>
 
-            <!-- БУРГЕР -->
             <input type="checkbox" id="menu-toggle" class="menu-toggle">
             <label for="menu-toggle" class="burger">☰</label>
 
             <nav class="main-nav">
                 <a href="index.html">Home</a>
-                <a href="#">Company Profile</a>
-                <a href="tomato-all.html">Products</a>
-                <a href="#">Services</a>
-                <a href="#">R &amp; D</a>
+                <a href="tomato-all.html">Tomato</a>
+                <a href="beet-vue.html">Beet</a>
                 <a href="contact.html">Contact</a>
             </nav>
         </div>
-
     </div>
 </header>
 
-<div class="contact-page-wrapper">
+<div id="app" class="contact-page-wrapper">
     <section class="contact-section">
         <div class="contact-inner">
             <h1 class="contact-title">Contact us</h1>
             <div class="mini-line"></div>
 
-            <div class="contact-grid">
+            <div class="cart-block" v-if="cart.length">
+                <h3 class="cart-title">Your cart</h3>
+
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in cart" :key="item.id">
+                            <td><img :src="item.image" :alt="item.name" class="cart-thumb"></td>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.shortText }}</td>
+                            <td>
+                                <button type="button" class="remove-btn" @click="removeFromCart(item.id)">×</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p v-else class="empty-cart">Cart is empty.</p>
+
+            <div v-if="!orderDone" class="contact-grid">
                 <div class="contact-left">
                     <h3>Company information</h3>
                     <p><strong>Agridera Seeds &amp; Agriculture Ltd.</strong></p>
@@ -65,14 +81,22 @@
                 </div>
 
                 <div class="contact-right">
-                    <form class="contact-form">
-                        <input type="text" placeholder="Your name" required>
-                        <input type="email" placeholder="Your email" required>
-                        <input type="text" placeholder="Subject">
-                        <textarea placeholder="Your message" rows="6" required></textarea>
+                    <form class="contact-form" @submit.prevent="makeOrder">
+                        <input type="text" placeholder="Your name *" v-model="contactFields.name" required>
+                        <input type="email" placeholder="Your email *" v-model="contactFields.email" required>
+                        <input type="text" placeholder="Subject" v-model="contactFields.subject">
+                        <textarea placeholder="Your message *" rows="6" v-model="contactFields.message" required></textarea>
                         <button type="submit">Send</button>
                     </form>
                 </div>
+            </div>
+
+            <div v-else class="order-result">
+                <h3>Order information</h3>
+                <p><strong>Name:</strong> {{ orderInfo.name }}</p>
+                <p><strong>Email:</strong> {{ orderInfo.email }}</p>
+                <p><strong>Subject:</strong> {{ orderInfo.subject }}</p>
+                <p><strong>Message:</strong> {{ orderInfo.message }}</p>
             </div>
         </div>
     </section>
@@ -81,6 +105,100 @@
 <footer class="footer text-center">
     <p>© 2026 Agridera</p>
 </footer>
+
+<script>
+const { createApp } = Vue;
+
+createApp({
+    data() {
+        return {
+            products: [
+                {
+                    id: 1,
+                    image: "tomato-1.png",
+                    name: "TAG 1000 (TAG 853)",
+                    shortText: "Tomato Determinate Red Standard Round"
+                },
+                {
+                    id: 2,
+                    image: "tomato-2.png",
+                    name: "TAG 1001 (TAG 855)",
+                    shortText: "Tomato Determinate Red Standard Round"
+                },
+                {
+                    id: 3,
+                    image: "tomato-3.png",
+                    name: "TAG 1002 (TAG 809)",
+                    shortText: "Tomato Determinate Red Standard Round"
+                },
+                {
+                    id: 101,
+                    image: "beet-1.png",
+                    name: "BEET 1001",
+                    shortText: "Fresh market red beet"
+                },
+                {
+                    id: 102,
+                    image: "beet-2.png",
+                    name: "BEET 1002",
+                    shortText: "Sweet and strong roots"
+                },
+                {
+                    id: 103,
+                    image: "beet-3.png",
+                    name: "BEET 1003",
+                    shortText: "Perfect for storage"
+                }
+            ],
+            cart: [],
+            contactFields: {
+                name: "",
+                email: "",
+                subject: "",
+                message: ""
+            },
+            orderDone: false,
+            orderInfo: {
+                name: "",
+                email: "",
+                subject: "",
+                message: ""
+            }
+        };
+    },
+    mounted() {
+        this.getCart();
+    },
+    methods: {
+        getCart() {
+            const storageCart = JSON.parse(localStorage.getItem("cart")) || {};
+            const ids = Object.keys(storageCart).map(id => Number(id));
+            this.cart = this.products.filter(product => ids.includes(product.id));
+        },
+
+        removeFromCart(id) {
+            this.cart = this.cart.filter(item => item.id !== id);
+
+            const storageCart = JSON.parse(localStorage.getItem("cart")) || {};
+            delete storageCart[id];
+            localStorage.setItem("cart", JSON.stringify(storageCart));
+        },
+
+        makeOrder() {
+            this.orderInfo = {
+                name: this.contactFields.name,
+                email: this.contactFields.email,
+                subject: this.contactFields.subject,
+                message: this.contactFields.message
+            };
+
+            this.orderDone = true;
+            this.cart = [];
+            localStorage.setItem("cart", JSON.stringify({}));
+        }
+    }
+}).mount("#app");
+</script>
 
 </body>
 </html>
